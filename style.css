@@ -9,6 +9,9 @@ body {
   overflow: hidden;
   background: rgb(0, 0, 0);
   background-size: cover;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-optical-sizing: auto;
 }
 
 .katibeh-regular {
@@ -51,8 +54,10 @@ audio {
 }
 
 .brd {
-  font-family: "Lilita One", sans-serif;
-  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-optical-sizing: auto;
+  
   font-style: normal;
 }
 
@@ -105,7 +110,9 @@ audio {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 0.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-optical-sizing: auto;
   font-weight: normal;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
