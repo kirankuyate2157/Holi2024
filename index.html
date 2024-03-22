@@ -14,6 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Katibeh&family=Rubik+Vinyl&family=Lilita+One&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/e8df42b7ae.js" crossorigin="anonymous"></script>
+
+    <script async defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "YOUR_VERCEL_ANALYTICS_TOKEN"}'></script>
+
 </head>
 
 <body>
@@ -46,7 +50,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Coming soon..</a>
+                            <a class="dropdown-item" href="#">Visitors <span id="count"></span></a>
                             <a class="dropdown-item" href="#">Another action</a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
@@ -117,22 +123,43 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>
+        const countEl = document.getElementById("count");
 
-        // Get references to the audio player and the music icon
+        function countvisits() {
+            fetch('https://api.api-ninjas.com/v1/counter?id=kk&hit=true', {
+                headers: {
+                    'X-Api-Key': 'ejcmZpVADHpmiNK1gSoI1A==NdFWpACzC3fm8QDl'
+                }
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    console.log("count :", res.value)
+                    countEl.innerHTML = res.value;
+                })
+                .catch((error) => {
+                    console.error('Error fetching count:', error);
+                });
+        }
+
+        // Call countvisits function
+        countvisits();
+
+
+
         const audioPlayer = document.getElementById('audioPlayer');
         const musicIcon = document.getElementById('musicIcon');
         const musicPlayer = document.getElementById('musicPlayer');
 
-        // Add click event listener to the music player button
+
         musicPlayer.addEventListener('click', function () {
-            // Check if audio is currently muted
+
             if (audioPlayer.muted) {
-                // If muted, unmute the audio and change the icon to indicate sound is on
+
                 audioPlayer.muted = false;
                 musicIcon.classList.remove('fa-volume-off');
                 musicIcon.classList.add('fa-volume-up');
             } else {
-                // If not muted, mute the audio and change the icon to indicate sound is off
+
                 audioPlayer.muted = true;
                 musicIcon.classList.remove('fa-volume-up');
                 musicIcon.classList.add('fa-volume-off');
